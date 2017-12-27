@@ -4,7 +4,13 @@
   "description": "awesome-react",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --config config/webpack.dev.js",
+    "start-browser": "yarn run start --open",
+    "build": "webpack --config config/webpack.prod.js",
+    "test": "jest",
+    "lint": "eslint --ext .jsx --ext .js src/",
+    "format": "prettier",
+    "serve": "http-server ./dist/ -p 9000",
     "commitmsg": "commitlint -e $GIT_PARAMS"
   },
   "repository": {
@@ -30,17 +36,34 @@
     "autoprefix": "^1.0.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.1.2",
+    "babel-jest": "^22.0.4",
     "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.7",
     "eslint": "^4.14.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "file-loader": "^1.1.6",
+    "html-webpack-plugin": "^2.30.1",
     "http-server": "^0.10.0",
     "husky": "^0.14.3",
+    "jest": "^22.0.4",
     "node-sass": "^4.7.2",
+    "prettier": "^1.9.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "uglifyjs-webpack-plugin": "^1.1.4",
+    "url-loader": "^0.6.2",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   }
 }

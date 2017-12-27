@@ -2,6 +2,10 @@
 
 Front-end with React@^16
 
+## Code styles
+
+* [React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
+
 ## MIT License
 
 Copyright (c) 2017 TaylorPzreal
