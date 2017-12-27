@@ -5,7 +5,4 @@ function App() {
   return <h1>Hello World</h1>;
 }
 
-ReactDom.render(
-  <App />,
-  document.getElementById('app'),
-);
+ReactDom.render(<App />, document.getElementById('app'));

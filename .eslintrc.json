@@ -14,10 +14,12 @@
     "node": true
   },
   "rules": {
-    "comma-dangle": 0
+    
   },
   "plugins": [
-    
+    "react",
+    "jsx-a11y",
+    "import"
   ],
   "globals": {
 
