@@ -58,7 +58,7 @@ type includes:
   "style",
   "refactor",
   "test",
-  "rever"'
+  "rever"
 }
 ```
 
@@ -79,6 +79,13 @@ git config --global core.editor "vim"
 * [ ] redux
 * [ ] router
 * [ ] cssnext
+
+## Support Plans
+
+* [ ] GraphQL
+* [ ] Apollo + Relay Modern
+* [ ] SSH
+* [ ] PWA(Service worker)
 
 ## MIT License
 
