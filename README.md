@@ -75,7 +75,7 @@ git config --global core.editor "vim"
 ## Problems
 
 * [x] Fonts can't load # Make webpack css-loader module: false, [More about css-modules](https://github.com/css-modules/css-modules)
-* [ ] Jest test conf
+* [x] Jest test conf # Make ReactDom to ReactDOM, word error.
 * [ ] redux
 * [ ] router
 * [ ] cssnext
