@@ -12,13 +12,15 @@ Front-end with React@^16
 * format(prettier)
 * Test
 
-## commitlint
+## Commitlint
 
-> The most common commit conventions follow this pattern:(all lower-case)
+> The most common commit conventions follow this pattern:
 
 ```md
-type(scope?): subject
+type: subject(lower-case)
+# add one line
 body?
+# add one line
 footer?
 ```
 
@@ -36,6 +38,12 @@ type includes:
   'test',
   'revert'
 }
+```
+
+You could config vim as default editor for git commit, just do:
+
+```bash
+git config --global core.editor "vim"
 ```
 
 ## Code styles
