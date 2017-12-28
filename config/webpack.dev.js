@@ -1,25 +1,15 @@
 const { root } = require('./root');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const merge = require('webpack-merge');
+const { common } = require('./webpack.common');
 
-module.exports = {
+module.exports = merge(common, {
   devtool: 'cheap-module-source-map',
-  entry: {
-    app: root('src/index.jsx')
-  },
   output: {
     pathinfo: true,
-    filename: '[name].[chunkhash:20].bundle.js',
-    chunkFilename: '[name].[chunkhash:20].chunk.js',
-    path: root('dist'),
-    publicPath: '/'
-  },
-  resolve: {
-    modules: ['node_modules'],
-    extensions: ['.js', '.jsx', '.json']
   },
   module: {
-    strictExportPresence: true,
     rules: [
       {
         oneOf: [
@@ -137,14 +127,7 @@ module.exports = {
     compress: true,
     port: 9000
   },
-  node: {
-    dgram: 'empty',
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty',
-    child_process: 'empty',
-  },
   performance: {
     hints: false,
   },
-};
+});
