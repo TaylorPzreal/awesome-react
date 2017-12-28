@@ -49,17 +49,7 @@ footer?
 type includes:
 
 ```json
-{
-  "add",
-  "update",
-  "feat",
-  "fix",
-  "docs",
-  "style",
-  "refactor",
-  "test",
-  "rever"
-}
+["add", "update", "feat", "fix", "docs", "style", "refactor", "test", "rever"]
 ```
 
 You could config vim as default editor for git commit, just do:
