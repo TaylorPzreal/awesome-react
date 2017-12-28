@@ -1,0 +1,7 @@
+body {
+  margin: 0;
+}
+
+:local(.font) {
+  font-size: 60px;
+}

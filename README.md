@@ -50,15 +50,15 @@ type includes:
 
 ```json
 {
-  'add',
-  'update',
-  'feat',
-  'fix',
-  'docs',
-  'style',
-  'refactor',
-  'test',
-  'revert'
+  "add",
+  "update",
+  "feat",
+  "fix",
+  "docs",
+  "style",
+  "refactor",
+  "test",
+  "rever"'
 }
 ```
 
@@ -74,11 +74,11 @@ git config --global core.editor "vim"
 
 ## Problems
 
-[ ] Fonts can't load
-[ ] Jest test conf
-[ ] redux
-[ ] router
-[ ] cssnext
+* [x] Fonts can't load # Make webpack css-loader module: false, [More about css-modules](https://github.com/css-modules/css-modules)
+* [ ] Jest test conf
+* [ ] redux
+* [ ] router
+* [ ] cssnext
 
 ## MIT License
 

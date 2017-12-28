@@ -12,7 +12,7 @@ module.exports = {
     filename: '[name].[chunkhash:20].bundle.js',
     chunkFilename: '[name].[chunkhash:20].chunk.js',
     path: root('dist'),
-    publicPath: ''
+    publicPath: '/'
   },
   resolve: {
     modules: ['node_modules'],
@@ -40,7 +40,7 @@ module.exports = {
             test: /\.(png|jpg|jpeg|gif|bmp)$/,
             loader: 'url-loader',
             options: {
-              limit: 8192,
+              limit: 10000,
               name: 'assets/[name].[hash:8].[ext]'
             }
           },
@@ -51,7 +51,6 @@ module.exports = {
               {
                 loader: 'css-loader',
                 options: {
-                  modules: true,
                   sourceMap: true,
                   importLoaders: 1,
                   localIdentName: '[name]_[local]_[hash:base64:5]'
@@ -85,7 +84,6 @@ module.exports = {
               {
                 loader: 'css-loader',
                 options: {
-                  modules: true,
                   sourceMap: true,
                   importLoaders: 2,
                   localIdentName: '[name]_[local]_[hash:base64:5]'
