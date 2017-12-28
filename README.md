@@ -2,6 +2,24 @@
 
 Front-end with React@^16
 
+## Installation And Usage
+
+```bash
+git clone git@github.com:TaylorPzreal/awesome-react.git
+
+cd awesome-react
+yarn install
+
+yarn start # start a dev server
+yarn start-browser # start a dev server and open default browser
+yarn build # build for production
+yarn test # run test
+yarn lint # run lint jsx
+yarn format # format code: .jsx?, .md, .s?css
+
+yarn server # test build folder, here is dist folder.
+```
+
 ## Configuration
 
 * npm init & gitignore
@@ -53,6 +71,14 @@ git config --global core.editor "vim"
 ## Code styles
 
 * [React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
+
+## Problems
+
+[ ] Fonts can't load
+[ ] Jest test conf
+[ ] redux
+[ ] router
+[ ] cssnext
 
 ## MIT License
 
