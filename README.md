@@ -2,6 +2,16 @@
 
 Front-end with React@^16
 
+## Configuration
+
+* npm init & gitignore
+* File structure
+* commitlint
+* webpack
+* eslint
+* format(prettier)
+* Test
+
 ## Code styles
 
 * [React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)

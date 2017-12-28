@@ -1,5 +1,6 @@
 const { root } = require('./root');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   devtool: 'cheap-module-source-map',
@@ -7,19 +8,78 @@ module.exports = {
     app: root('src/index.jsx')
   },
   output: {
+    pathinfo: true,
     filename: '[name].[chunkhash:20].bundle.js',
     chunkFilename: '[name].[chunkhash:20].chunk.js',
-    path: root('dist')
+    path: root('dist'),
+    publicPath: ''
   },
   resolve: {
+    modules: ['node_modules'],
     extensions: ['.js', '.jsx', '.json']
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
+        oneOf: [
+          {
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            use: ['babel-loader', 'eslint-loader']
+          },
+          {
+            test: /\.(png|jpg|jpeg|gif|bmp)$/,
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              name: 'assets/[name].[hash:8].[ext]'
+            }
+          },
+          {
+            test: /\.css$/,
+            use: [
+              'style-loader',
+              {
+                loader: 'css-loader',
+                options: {
+                  modules: true,
+                  sourceMap: true,
+                  importLoaders: 1,
+                  localIdentName: '[name]_[local]_[hash:base64:5]'
+                }
+              },
+              {
+                loader: 'postcss-loader',
+                options: {
+                  ident: 'postcss',
+                  sourceMap: true,
+                  plugins: () => [
+                    require('postcss-flexbugs-fixes'),
+                    autoprefixer({
+                      browsers: [
+                        '>1%',
+                        'last 4 versions',
+                        'Firefox ESR',
+                        'not ie < 11' // React doesn't support IE8 anyway
+                      ],
+                      flexbox: 'no-2009'
+                    })
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            test: /\.scss$/
+          },
+          {
+            exclude: [/\.jsx?$/, /\.html$/, /\.json$/],
+            loader: 'file-loader',
+            options: {
+              name: 'assets/[name].[hash:8].[ext]'
+            }
+          }
+        ]
       }
     ]
   },
