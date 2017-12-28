@@ -12,6 +12,32 @@ Front-end with React@^16
 * format(prettier)
 * Test
 
+## commitlint
+
+> The most common commit conventions follow this pattern:(all lower-case)
+
+```md
+type(scope?): subject
+body?
+footer?
+```
+
+type includes:
+
+```json
+{
+  'add',
+  'update',
+  'feat',
+  'fix',
+  'docs',
+  'style',
+  'refactor',
+  'test',
+  'revert'
+}
+```
+
 ## Code styles
 
 * [React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
