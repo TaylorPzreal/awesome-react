@@ -18,9 +18,13 @@ Front-end with React@^16
 
 ```md
 type: subject(lower-case)
-# add one line
+
+<!-- add one space line -->
+
 body?
-# add one line
+
+<!-- add one space line -->
+
 footer?
 ```
 

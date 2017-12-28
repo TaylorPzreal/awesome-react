@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --config config/webpack.dev.js",
     "start-browser": "yarn run start --open",
     "build": "webpack --config config/webpack.prod.js",
-    "test": "jest",
+    "test": "jest --env=jsdom",
     "lint": "eslint --ext .jsx --ext .js src/",
     "format": "npm-run-all format-*",
     "format-jsx": "prettier src/**/*.js src/**/*.jsx --trailing-comma=es5 --write && yarn run lint --fix",
@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/TaylorPzreal/awesome-react#readme",
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
@@ -60,7 +61,9 @@
     "node-sass": "^4.7.2",
     "npm-run-all": "^4.1.2",
     "postcss-flexbugs-fixes": "^3.2.0",
+    "postcss-loader": "^2.0.9",
     "prettier": "^1.9.2",
+    "react-test-renderer": "^16.2.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "uglifyjs-webpack-plugin": "^1.1.4",
@@ -71,6 +74,11 @@
   "jest": {
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
-    }
+    },
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/config/",
+      "<rootDir>/src/assets/"
+    ]
   }
 }

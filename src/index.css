@@ -1,8 +1,1 @@
-body {
-  margin: 0;
-  display: flex;
-}
 
-:local(.font) {
-  font-size: 12px;
-}

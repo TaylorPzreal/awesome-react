@@ -19,13 +19,22 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json']
   },
   module: {
+    strictExportPresence: true,
     rules: [
       {
         oneOf: [
           {
             test: /\.jsx?$/,
             exclude: /node_modules/,
-            use: ['babel-loader', 'eslint-loader']
+            use: [
+              {
+                loader: 'babel-loader',
+                options: {
+                  cacheDirectory: true
+                }
+              },
+              'eslint-loader'
+            ]
           },
           {
             test: /\.(png|jpg|jpeg|gif|bmp)$/,
@@ -70,10 +79,47 @@ module.exports = {
             ]
           },
           {
-            test: /\.scss$/
+            test: /\.scss$/,
+            use: [
+              'style-loader',
+              {
+                loader: 'css-loader',
+                options: {
+                  modules: true,
+                  sourceMap: true,
+                  importLoaders: 2,
+                  localIdentName: '[name]_[local]_[hash:base64:5]'
+                }
+              },
+              {
+                loader: 'postcss-loader',
+                options: {
+                  ident: 'postcss',
+                  sourceMap: true,
+                  plugins: () => [
+                    require('postcss-flexbugs-fixes'),
+                    autoprefixer({
+                      browsers: [
+                        '>1%',
+                        'last 4 versions',
+                        'Firefox ESR',
+                        'not ie < 11' // React doesn't support IE8 anyway
+                      ],
+                      flexbox: 'no-2009'
+                    })
+                  ]
+                }
+              },
+              {
+                loader: 'sass-loader',
+                options: {
+                  sourceMap: true
+                }
+              }
+            ]
           },
           {
-            exclude: [/\.jsx?$/, /\.html$/, /\.json$/],
+            exclude: [/\.js$/, /\.html$/, /\.json$/],
             loader: 'file-loader',
             options: {
               name: 'assets/[name].[hash:8].[ext]'
@@ -92,5 +138,15 @@ module.exports = {
   devServer: {
     compress: true,
     port: 9000
-  }
+  },
+  node: {
+    dgram: 'empty',
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
+    child_process: 'empty',
+  },
+  performance: {
+    hints: false,
+  },
 };
