@@ -4,4 +4,6 @@ body {
 
 :local(.font) {
   font-size: 60px;
+  transform: rotateX(45deg);
+  transition: 1s ease;
 }

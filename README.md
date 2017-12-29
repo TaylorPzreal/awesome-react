@@ -25,10 +25,13 @@ yarn server # test build folder, here is dist folder.
 * npm init & gitignore
 * File structure
 * commitlint
-* webpack
 * eslint
 * format(prettier)
+* webpack
 * Test
+* Router
+* Common http request and interceptor
+* webpack dll
 
 ## Commitlint
 

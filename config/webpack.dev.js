@@ -6,9 +6,15 @@ const { common } = require('./webpack.common');
 
 module.exports = merge(common, {
   devtool: 'cheap-module-source-map',
+
   output: {
     pathinfo: true,
+    filename: '[name].[hash:20].bundle.js',
+    chunkFilename: '[name].[hash:20].chunk.js',
+    path: root('dist'),
+    publicPath: '/'
   },
+
   module: {
     rules: [
       {
@@ -121,11 +127,13 @@ module.exports = merge(common, {
     new HtmlWebpackPlugin({
       inject: true,
       template: 'src/index.html'
-    })
+    }),
   ],
   devServer: {
     compress: true,
-    port: 9000
+    port: 9000,
+    historyApiFallback: true,
+    overlay: true,
   },
   performance: {
     hints: false,

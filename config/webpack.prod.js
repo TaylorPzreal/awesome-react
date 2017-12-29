@@ -12,7 +12,15 @@ const useSourceMap = false;  // should use source map
 
 module.exports = merge(common, {
   bail: true,
+  recordsPath: root('docs/build-records.json'),
   devtool: useSourceMap ? 'source-map' : false, // deploy as false
+
+  output: {
+    filename: '[name].[chunkhash:20].bundle.js',
+    chunkFilename: '[name].[chunkhash:20].chunk.js',
+    path: root('dist'),
+    publicPath: '/'
+  },
 
   module: {
     rules: [
@@ -150,6 +158,18 @@ module.exports = merge(common, {
         minifyJS: true,
         minifyCSS: true,
         minifyURLs: true
+      },
+      chunksSortMode: function(chunk1, chunk2) {
+        const orders = ['inline', 'polyfills', 'vendor', 'app'];
+        var order1 = orders.indexOf(chunk1.names[0]);
+        var order2 = orders.indexOf(chunk2.names[0]);
+        if (order1 > order2) {
+          return 1;
+        } else if (order1 < order2) {
+          return -1;
+        } else {
+          return 0;
+        }
       }
     }),
 

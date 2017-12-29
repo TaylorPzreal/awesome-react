@@ -1,15 +1,9 @@
 const { root } = require('./root');
-const { ProgressPlugin, BannerPlugin } = require('webpack');
+const { ProgressPlugin, BannerPlugin, NamedModulesPlugin } = require('webpack');
 
 exports.common = {
   entry: {
     app: root('src/index.jsx')
-  },
-  output: {
-    filename: '[name].[chunkhash:20].bundle.js',
-    chunkFilename: '[name].[chunkhash:20].chunk.js',
-    path: root('dist'),
-    publicPath: '/'
   },
   resolve: {
     modules: ['node_modules'],
@@ -20,6 +14,9 @@ exports.common = {
   },
   plugins: [
     new ProgressPlugin(),
+
+    new NamedModulesPlugin(),
+
     new BannerPlugin('©2017 honeymorning.com taylorpzreal@gmail.com')
   ],
   node: {
