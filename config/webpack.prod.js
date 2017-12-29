@@ -1,4 +1,5 @@
 const { root } = require('./root');
+const { HashedModuleIdsPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -143,6 +144,8 @@ module.exports = merge(common, {
       verbose: true,
       dry: false
     }),
+
+    new HashedModuleIdsPlugin(),
 
     new HtmlWebpackPlugin({
       inject: true,

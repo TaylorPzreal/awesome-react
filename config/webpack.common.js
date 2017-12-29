@@ -1,5 +1,5 @@
 const { root } = require('./root');
-const { ProgressPlugin, BannerPlugin, NamedModulesPlugin } = require('webpack');
+const { ProgressPlugin, BannerPlugin } = require('webpack');
 
 exports.common = {
   entry: {
@@ -14,8 +14,6 @@ exports.common = {
   },
   plugins: [
     new ProgressPlugin(),
-
-    new NamedModulesPlugin(),
 
     new BannerPlugin('©2017 honeymorning.com taylorpzreal@gmail.com')
   ],
