@@ -2,6 +2,7 @@ const { root } = require('./root');
 const { HashedModuleIdsPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const flexbugsFixes = require('postcss-flexbugs-fixes');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -9,7 +10,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const merge = require('webpack-merge');
 const { common } = require('./webpack.common');
 
-const useSourceMap = false;  // should use source map
+const useSourceMap = false; // should use source map
 
 module.exports = merge(common, {
   bail: true,
@@ -73,7 +74,7 @@ module.exports = merge(common, {
                     ident: 'postcss',
                     sourceMap: useSourceMap,
                     plugins: () => [
-                      require('postcss-flexbugs-fixes'),
+                      flexbugsFixes,
                       autoprefixer({
                         browsers: ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie < 11'],
                         flexbox: 'no-2009'
@@ -109,7 +110,7 @@ module.exports = merge(common, {
                     ident: 'postcss',
                     sourceMap: useSourceMap,
                     plugins: () => [
-                      require('postcss-flexbugs-fixes'),
+                      flexbugsFixes,
                       autoprefixer({
                         browsers: ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie < 11'],
                         flexbox: 'no-2009'
@@ -162,17 +163,16 @@ module.exports = merge(common, {
         minifyCSS: true,
         minifyURLs: true
       },
-      chunksSortMode: function(chunk1, chunk2) {
+      chunksSortMode: (chunk1, chunk2) => {
         const orders = ['inline', 'polyfills', 'vendor', 'app'];
-        var order1 = orders.indexOf(chunk1.names[0]);
-        var order2 = orders.indexOf(chunk2.names[0]);
+        const order1 = orders.indexOf(chunk1.names[0]);
+        const order2 = orders.indexOf(chunk2.names[0]);
         if (order1 > order2) {
           return 1;
         } else if (order1 < order2) {
           return -1;
-        } else {
-          return 0;
         }
+        return 0;
       }
     }),
 

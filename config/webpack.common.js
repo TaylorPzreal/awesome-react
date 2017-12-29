@@ -24,4 +24,4 @@ exports.common = {
     tls: 'empty',
     child_process: 'empty',
   },
-}
+};

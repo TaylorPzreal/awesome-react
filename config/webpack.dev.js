@@ -1,6 +1,7 @@
 const { root } = require('./root');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const flexbugsFixes = require('postcss-flexbugs-fixes');
 const { NamedModulesPlugin } = require('webpack');
 const merge = require('webpack-merge');
 const { common } = require('./webpack.common');
@@ -59,7 +60,7 @@ module.exports = merge(common, {
                   ident: 'postcss',
                   sourceMap: true,
                   plugins: () => [
-                    require('postcss-flexbugs-fixes'),
+                    flexbugsFixes,
                     autoprefixer({
                       browsers: [
                         '>1%',
@@ -92,7 +93,7 @@ module.exports = merge(common, {
                   ident: 'postcss',
                   sourceMap: true,
                   plugins: () => [
-                    require('postcss-flexbugs-fixes'),
+                    flexbugsFixes,
                     autoprefixer({
                       browsers: [
                         '>1%',
@@ -130,15 +131,15 @@ module.exports = merge(common, {
     new HtmlWebpackPlugin({
       inject: true,
       template: 'src/index.html'
-    }),
+    })
   ],
   devServer: {
     compress: true,
     port: 9000,
     historyApiFallback: true,
-    overlay: true,
+    overlay: true
   },
   performance: {
-    hints: false,
-  },
+    hints: false
+  }
 });
