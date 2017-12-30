@@ -13,6 +13,8 @@ yarn install
 yarn start # start a dev server
 yarn start-browser # start a dev server and open default browser
 yarn build # build for production
+yarn build-analyse # build and generate a stats.json
+yarn dll # generate DllPlugin
 yarn test # run test
 yarn lint # run lint jsx
 yarn format # format code: .jsx?, .md, .s?css
