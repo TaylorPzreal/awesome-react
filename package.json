@@ -1,8 +1,7 @@
 {
   "name": "awesome-react",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "awesome-react",
-  "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.js --hot",
     "start-browser": "yarn run start --open",
