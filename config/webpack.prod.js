@@ -7,6 +7,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const merge = require('webpack-merge');
 const { common } = require('./webpack.common');
 
@@ -145,6 +146,24 @@ module.exports = merge(common, {
       verbose: true,
       dry: false
     }),
+
+    new CopyWebpackPlugin(
+      [
+        {
+          from: root('/dll'),
+          to: root('/dist/dll'),
+          toType: 'dir'
+        },
+        {
+          from: root('/src/assets'),
+          to: root('/dist/assets'),
+          toType: 'dir'
+        }
+      ],
+      {
+        ignore: ['*.scss', '*.css', '**/fonts/*']
+      }
+    ),
 
     new HashedModuleIdsPlugin(),
 

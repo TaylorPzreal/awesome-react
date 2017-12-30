@@ -1,5 +1,8 @@
 const { root } = require('./root');
-const { ProgressPlugin, BannerPlugin } = require('webpack');
+const { ProgressPlugin, BannerPlugin, DllReferencePlugin } = require('webpack');
+const InterpolateWebpackPlugin = require('interpolate-webpack-plugin');
+
+const dllVendor = require(root('dll/vendor-manifest.json'));
 
 exports.common = {
   entry: {
@@ -15,6 +18,17 @@ exports.common = {
   plugins: [
     new ProgressPlugin(),
 
+    new InterpolateWebpackPlugin([{
+      key: 'INJECT_DLL',
+      value: root('dll/*.js'),
+      type: 'PATH'
+    }]),
+
+    new DllReferencePlugin({
+      context: __dirname,
+      manifest: dllVendor
+    }),
+
     new BannerPlugin('©2017 honeymorning.com taylorpzreal@gmail.com')
   ],
   node: {
@@ -22,6 +36,6 @@ exports.common = {
     fs: 'empty',
     net: 'empty',
     tls: 'empty',
-    child_process: 'empty',
-  },
+    child_process: 'empty'
+  }
 };
