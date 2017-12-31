@@ -2,6 +2,8 @@
 
 Front-end with React@^16
 
+> You could use this template by CLI [create-awesome-react](https://github.com/TaylorPzreal/create-awesome-react)
+
 ## Installation And Usage
 
 ```bash
