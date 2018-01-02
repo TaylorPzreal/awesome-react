@@ -74,7 +74,7 @@ git config --global core.editor "vim"
 * [x] Fonts can't load # Make webpack css-loader module: false, [More about css-modules](https://github.com/css-modules/css-modules)
 * [x] Jest test conf # Make ReactDom to ReactDOM, word error.
 * [ ] redux
-* [ ] router # [dynamic-import](https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/code-splitting.md)
+* [x] react-router@^4 # [More about dynamic-import](https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/code-splitting.md)
 * [ ] cssnext
 
 ## Support Plans
