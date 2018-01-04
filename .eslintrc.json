@@ -15,7 +15,7 @@
     "jest": true
   },
   "rules": {
-    
+    "no-console": [2, {"allow": ["warn", "error"]}]
   },
   "plugins": [
     "react",

@@ -1,0 +1,30 @@
+{
+  "index": "./README.md",
+  "package": "./package.json",
+  "source": "./src",
+  "destination": "./doc",
+  "includes": ["\\.jsx?$"],
+  "excludes": [],
+  "plugins": [
+    {
+      "name": "esdoc-standard-plugin",
+      "options": {
+        "lint": {"enable": true},
+        "coverage": {"enable": true},
+        "accessor": {"access": ["public", "protected", "private"], "autoPrivate": true},
+        "brand": {
+          "title": "Awesome React"
+        }
+      }
+    },
+    {
+      "name": "esdoc-jsx-plugin",
+      "options": {
+        "enable": true
+      }
+    },
+    {
+      "name": "esdoc-react-plugin"
+    }
+  ]
+}

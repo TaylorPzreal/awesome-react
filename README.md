@@ -20,8 +20,9 @@ yarn dll # generate DllPlugin
 yarn test # run test
 yarn lint # run lint jsx
 yarn format # format code: .jsx?, .md, .s?css
-
 yarn server # test build folder, here is dist folder.
+yarn doc # run esdoc to generate docs.
+yarn server-doc # test esdoc generated folder, here is doc folder.
 ```
 
 ## Configuration
@@ -84,6 +85,9 @@ git config --global core.editor "vim"
 * [ ] Apollo + Relay Modern
 * [ ] SSH
 * [ ] PWA(Service worker)
+* [x] Add ESDoc [Read more](https://esdoc.org/)
+
+  ![ESDoc](./docs/esdoc.png)
 
 ## More info
 
