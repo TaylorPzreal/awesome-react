@@ -1,7 +1,7 @@
 # 6 pro tips from react developers
 
 > stateless components: This means components that don’t have any this.state = { ... } calls in them. They only deal with incoming “props” and sub-components
-Anather is stateful components
+> Anather is stateful components
 
 ## 1. use functional components
 
