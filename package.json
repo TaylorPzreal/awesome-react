@@ -15,7 +15,8 @@
     "format-style": "prettier src/**/*.css src/**/*.scss --write",
     "format-md": "prettier README.md src/**/*.md docs/**/*.md --write",
     "server": "http-server ./dist/ -p 9000",
-    "commitmsg": "commitlint -e $GIT_PARAMS"
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "precommit": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -67,6 +68,7 @@
     "husky": "^0.14.3",
     "interpolate-webpack-plugin": "^1.0.2",
     "jest": "^22.0.4",
+    "lint-staged": "^6.0.0",
     "node-sass": "^4.7.2",
     "npm-run-all": "^4.1.2",
     "postcss-flexbugs-fixes": "^3.2.0",
@@ -91,5 +93,10 @@
       "<rootDir>/config/",
       "<rootDir>/src/assets/"
     ]
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": ["format-jsx", "git add"],
+    "src/**/*.{css,scss}": ["format-style", "git add"],
+    "*.md": ["format-md", "git add"]
   }
 }

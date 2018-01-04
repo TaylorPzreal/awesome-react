@@ -36,6 +36,7 @@ yarn server # test build folder, here is dist folder.
 * Router
 * Common http request and interceptor
 * webpack dll
+* precommit format
 
 ## Commitlint
 
@@ -83,6 +84,10 @@ git config --global core.editor "vim"
 * [ ] Apollo + Relay Modern
 * [ ] SSH
 * [ ] PWA(Service worker)
+
+## More info
+
+* [6 pro tips for React](./docs/best-practice.md)
 
 ## MIT License
 
