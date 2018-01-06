@@ -56,6 +56,8 @@
     "clean-webpack-plugin": "^0.1.17",
     "copy-webpack-plugin": "^4.3.1",
     "css-loader": "^0.28.7",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "esdoc": "^1.0.4",
     "esdoc-jsx-plugin": "^1.0.0",
     "esdoc-react-plugin": "^1.0.1",
@@ -91,14 +93,30 @@
     "webpack-merge": "^4.1.1"
   },
   "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx}",
+      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx}"
+    ],
+    "testEnvironment": "node",
     "transform": {
-      "^.+\\.jsx?$": "babel-jest"
+      "^.+\\.jsx?$": "babel-jest",
+      "^.+\\.s?css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|css|scss|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/",
       "<rootDir>/config/",
       "<rootDir>/src/assets/"
-    ]
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "jsx"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/config/jest/adapter.js"
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": [
