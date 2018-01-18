@@ -1,6 +1,6 @@
 {
   "name": "awesome-react",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A basic web app from React, called awesome-react",
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.js --hot",
