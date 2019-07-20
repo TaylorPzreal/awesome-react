@@ -1,19 +1,18 @@
-const { root } = require('./root');
 const { HashedModuleIdsPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const autoprefixer = require('autoprefixer');
-const flexbugsFixes = require('postcss-flexbugs-fixes');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const merge = require('webpack-merge');
 const { common } = require('./webpack.common');
+const { root } = require('./root');
 
 const useSourceMap = false; // should use source map
 
 module.exports = merge(common, {
+  mode: 'production',
   bail: true,
   recordsPath: root('docs/build-records.json'),
   devtool: useSourceMap ? 'source-map' : false, // deploy as false
@@ -52,81 +51,57 @@ module.exports = merge(common, {
           },
           {
             test: /\.css$/,
-            use: ExtractTextPlugin.extract({
-              fallback: {
-                loader: 'style-loader',
+            use: [
+              {
+                loader: MiniCssExtractPlugin.loader,
                 options: {
-                  hmr: false
+                  hmr: false,
+                },
+              },
+              {
+                loader: 'css-loader',
+                options: {
+                  importLoaders: 1,
+                  sourceMap: useSourceMap,
                 }
               },
-              use: [
-                {
-                  loader: 'css-loader',
-                  options: {
-                    importLoaders: 1,
-                    minimize: true,
-                    sourceMap: useSourceMap,
-                    localIdentName: '[name]_[local]_[hash:base64:5]'
-                  }
-                },
-                {
-                  loader: 'postcss-loader',
-                  options: {
-                    ident: 'postcss',
-                    sourceMap: useSourceMap,
-                    plugins: () => [
-                      flexbugsFixes,
-                      autoprefixer({
-                        browsers: ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie < 11'],
-                        flexbox: 'no-2009'
-                      })
-                    ]
-                  }
+              {
+                loader: 'postcss-loader',
+                options: {
+                  sourceMap: useSourceMap,
                 }
-              ]
-            })
+              }
+            ],
           },
           {
             test: /\.scss$/,
-            use: ExtractTextPlugin.extract({
-              fallback: {
-                loader: 'style-loader',
+            use: [
+              {
+                loader: MiniCssExtractPlugin.loader,
                 options: {
-                  hmr: false
+                  hmr: false,
+                },
+              },
+              {
+                loader: 'css-loader',
+                options: {
+                  importLoaders: 2,
+                  sourceMap: useSourceMap,
                 }
               },
-              use: [
-                {
-                  loader: 'css-loader',
-                  options: {
-                    importLoaders: 2,
-                    minimize: true,
-                    sourceMap: useSourceMap,
-                    localIdentName: '[name]_[local]_[hash:base64:5]'
-                  }
-                },
-                {
-                  loader: 'postcss-loader',
-                  options: {
-                    ident: 'postcss',
-                    sourceMap: useSourceMap,
-                    plugins: () => [
-                      flexbugsFixes,
-                      autoprefixer({
-                        browsers: ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie < 11'],
-                        flexbox: 'no-2009'
-                      })
-                    ]
-                  }
-                },
-                {
-                  loader: 'sass-loader',
-                  options: {
-                    sourceMap: useSourceMap
-                  }
+              {
+                loader: 'postcss-loader',
+                options: {
+                  sourceMap: useSourceMap,
                 }
-              ]
-            })
+              },
+              {
+                loader: 'sass-loader',
+                options: {
+                  sourceMap: useSourceMap
+                }
+              }
+            ],
           },
           {
             exclude: [/\.js$/, /\.html$/, /\.json$/],
@@ -140,14 +115,13 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['dist/**/*'], {
-      root: root(),
-      exclude: [],
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: ['dist/**/*'],
       verbose: true,
       dry: false
     }),
 
-    new CopyWebpackPlugin(
+    new CopyPlugin(
       [
         {
           from: root('/dll'),
@@ -188,15 +162,20 @@ module.exports = merge(common, {
         const order2 = orders.indexOf(chunk2.names[0]);
         if (order1 > order2) {
           return 1;
-        } else if (order1 < order2) {
+        }
+        if (order1 < order2) {
           return -1;
         }
         return 0;
       }
     }),
 
-    new ExtractTextPlugin({
-      filename: 'assets/css/[name].[contenthash:8].css'
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // all options are optional
+      filename: 'assets/css/[name].[contenthash:8].css',
+      chunkFilename: 'assets/css/[id].css',
+      ignoreOrder: false, // Enable to remove warnings about conflicting order
     }),
 
     new UglifyJsPlugin({
@@ -213,9 +192,6 @@ module.exports = merge(common, {
         ecma: 5,
         warnings: false,
         ie8: false,
-        mangle: {
-          safari10: true
-        },
         compress: {
           comparisons: false
         }

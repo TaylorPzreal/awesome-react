@@ -18,9 +18,23 @@
       "chunks": {
         "byName": {},
         "byBlocks": {},
-        "usedIds": {
-          "1": 1
-        }
+        "usedIds": [
+          0
+        ],
+        "bySource": {}
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {},
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
       }
     }
   ],
@@ -128,8 +142,43 @@
       "app": 0
     },
     "byBlocks": {},
-    "usedIds": {
-      "0": 0
+    "usedIds": [
+      0
+    ],
+    "bySource": {}
+  },
+  "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js??ref--4-oneOf-2-1!node_modules/postcss-loader/src/index.js??ref--4-oneOf-2-2!src/App.css": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
     }
-  }
+  ],
+  "HtmlWebpackCompiler": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "HtmlWebpackPlugin_0": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ]
 }

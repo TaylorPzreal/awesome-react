@@ -39,9 +39,6 @@ module.exports = {
         ecma: 5,
         warnings: false,
         ie8: false,
-        mangle: {
-          safari10: true
-        },
         compress: {
           comparisons: false
         }

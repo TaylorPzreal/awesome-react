@@ -1,6 +1,6 @@
-const { root } = require('./root');
 const { ProgressPlugin, BannerPlugin, DllReferencePlugin } = require('webpack');
 const InterpolateWebpackPlugin = require('interpolate-webpack-plugin');
+const { root } = require('./root');
 
 const dllVendor = require(root('dll/vendor-manifest.json'));
 

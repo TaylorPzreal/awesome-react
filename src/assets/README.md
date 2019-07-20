@@ -1,0 +1,5 @@
+# folders
+
+- images
+- fonts
+- styles

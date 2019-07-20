@@ -5,19 +5,19 @@
 
 ## 1. use functional components
 
-* less code
-* easier to understand
-* stateless
-* simpler to test
-* no 'this' binding
-* easier to extract smaller components
+- less code
+- easier to understand
+- stateless
+- simpler to test
+- no 'this' binding
+- easier to extract smaller components
 
 ## 2. Keep your components small
 
-* Read
-* Test
-* Maintain
-* Reuse
+- Read
+- Test
+- Maintain
+- Reuse
 
 ## 3. Understand how to handle 'this'
 
@@ -44,6 +44,6 @@ It can help prevent bugs by ensuring you are using the right data types for your
 
 > Not all lists need to have keys. A list needs keys if either of the following are true:
 
-* The list-items have memory from one render to the next. For instance, when a to-do list renders, each item must "remember" whether it was checked off. The items shouldn't get amnesia when they render.
+- The list-items have memory from one render to the next. For instance, when a to-do list renders, each item must "remember" whether it was checked off. The items shouldn't get amnesia when they render.
 
-* A list's order might be shuffled. For instance, a list of search results might be shuffled from one render to the next.
+- A list's order might be shuffled. For instance, a list of search results might be shuffled from one render to the next.
