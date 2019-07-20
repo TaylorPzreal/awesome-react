@@ -1,0 +1,67 @@
+version: 2.1
+
+commands:
+  update-yarn:
+    steps:
+      - run:
+          name: Update yarn
+          command: yarn global add yarn@latest
+  install:
+    steps:
+      - run:
+          name: Install dependencies
+          command: yarn install
+  audit:
+    steps:
+      - run:
+          name: Audit dependencies
+          command: yarn audit
+  test:
+    steps:
+      - run:
+          name: Test
+          command: yarn test
+  save-cache:
+    steps:
+      - save_cache:
+          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+  build:
+    steps:
+      - run:
+          name: Build packages
+          command: yarn build
+  coverage:
+    steps:
+      - run:
+          name: UT Coverage
+          command: yarn coverage
+  run-node:
+    steps:
+      - checkout
+      - update-yarn
+      - install
+      - save-cache
+      # - audit # lodash high error
+      - test
+      - build
+      - coverage
+
+jobs:
+  v10:
+    docker:
+      - image: "node:10"
+    steps:
+      - run-node
+  v12:
+    docker:
+      - image: "node:12"
+    steps:
+      - run-node
+
+workflows:
+  node:
+    jobs:
+      - v10
+      - v12

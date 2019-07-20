@@ -2,6 +2,10 @@
 
 Front-end with React@^16.8.0
 
+![GitHub package.json version](https://img.shields.io/github/package-json/v/TaylorPzreal/awesome-react.svg)
+[![Coverage Status](https://coveralls.io/repos/github/TaylorPzreal/awesome-react/badge.svg?branch=master)](https://coveralls.io/github/TaylorPzreal/awesome-react?branch=master)
+[![CircleCI](https://circleci.com/gh/TaylorPzreal/awesome-react.svg?style=svg)](https://circleci.com/gh/TaylorPzreal/awesome-react)
+
 > You could use this template by CLI [create-awesome-react](https://github.com/TaylorPzreal/create-awesome-react)
 
 ## Installation And Usage
