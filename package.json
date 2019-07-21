@@ -69,11 +69,11 @@
     "esdoc-jsx-plugin": "^1.0.0",
     "esdoc-react-plugin": "^1.0.1",
     "esdoc-standard-plugin": "^1.0.0",
-    "eslint": "^6.0.1",
+    "eslint": "^6.1.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-loader": "^2.2.1",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^22.11.1",
+    "eslint-plugin-jest": "^22.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
     "file-loader": "^4.1.0",
@@ -104,34 +104,6 @@
     "webpack-dev-server": "^3.7.2",
     "webpack-manifest-plugin": "^2.0.4",
     "webpack-merge": "^4.2.1"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
-    ],
-    "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.{js,jsx}",
-      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx}"
-    ],
-    "testEnvironment": "node",
-    "transform": {
-      "^.+\\.jsx?$": "babel-jest",
-      "^.+\\.s?css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|css|scss|json)$)": "<rootDir>/config/jest/fileTransform.js"
-    },
-    "testPathIgnorePatterns": [
-      "<rootDir>/node_modules/",
-      "<rootDir>/config/",
-      "<rootDir>/src/assets/"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "jsx"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/config/jest/adapter.js"
-    ]
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": [
