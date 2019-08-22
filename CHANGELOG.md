@@ -2,6 +2,14 @@
 
  awesome-react
 
+## [1.1.0](https://github.com/TaylorPzreal/awesome-react/compare/v1.0.0...v1.1.0) (2019-08-22)
+
+
+### Features
+
+* **packages:** upgrade ([f881c4d](https://github.com/TaylorPzreal/awesome-react/commit/f881c4d))
+* seperate jest config & upgrade packages ([99bddde](https://github.com/TaylorPzreal/awesome-react/commit/99bddde))
+
 ## [1.0.0](https://github.com/TaylorPzreal/awesome-react/compare/v0.4.1...v1.0.0) (2019-07-20)
 
 
