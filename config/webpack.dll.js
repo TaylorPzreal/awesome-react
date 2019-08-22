@@ -8,6 +8,7 @@ const vendors = [
 ];
 
 module.exports = {
+  mode: 'production',
   output: {
     path: root('dll'),
     filename: '[name].[chunkhash].dll.js',
