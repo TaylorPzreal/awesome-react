@@ -9,10 +9,10 @@
     "build-analyse": "yarn run build --json > docs/stats.json",
     "dll": "rm -rf dll && webpack --config config/webpack.dll.js",
     "test": "jest --env=jsdom",
-    "lint": "eslint --ext .jsx --ext .js src/",
+    "lint": "eslint 'src/**/*.js?(x)'",
     "format": "npm-run-all format-*",
-    "format-jsx": "prettier src/**/*.js src/**/*.jsx --trailing-comma=es5 --write && yarn run lint --fix",
-    "format-style": "prettier src/**/*.css src/**/*.scss --write",
+    "format-jsx": "prettier 'src/**/*.js?(x)' --trailing-comma=es5 --write && yarn run lint --fix",
+    "format-style": "prettier 'src/**/*.?(s)css' --write",
     "server": "http-server ./dist/ -p 9000",
     "release": "standard-version",
     "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls"
