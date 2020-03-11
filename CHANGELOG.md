@@ -2,6 +2,13 @@
 
  awesome-react
 
+## [1.3.0](https://github.com/TaylorPzreal/awesome-react/compare/v1.2.0...v1.3.0) (2020-03-11)
+
+
+### Features
+
+* optimise dependencies ([0d549c6](https://github.com/TaylorPzreal/awesome-react/commit/0d549c6008e633a41af26fbe920f372184458eba))
+
 ## [1.2.0](https://github.com/TaylorPzreal/awesome-react/compare/v1.1.0...v1.2.0) (2020-03-01)
 
 
