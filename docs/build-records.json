@@ -180,5 +180,22 @@
         ]
       }
     }
+  ],
+  "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js??ref--4-oneOf-2-1!src/App.css": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
   ]
 }

@@ -25,11 +25,15 @@ yarn test # run test
 yarn lint # run lint jsx
 yarn format # format code: .jsx?, .md, .s?css
 yarn server # test build folder, here is dist folder.
-yarn doc # run esdoc to generate docs.
-yarn server-doc # test esdoc generated folder, here is doc folder.
 ```
 
-## Configuration
+You could config vim as default editor for git commit, just do:
+
+```bash
+git config --global core.editor "vim"
+```
+
+## Features
 
 - npm init & gitignore
 - File structure
@@ -43,34 +47,6 @@ yarn server-doc # test esdoc generated folder, here is doc folder.
 - webpack dll
 - precommit format
 
-## Commitlint
-
-> The most common commit conventions follow this pattern:
-
-```md
-type: subject(lower-case)
-
-<!-- add one space line -->
-
-body?
-
-<!-- add one space line -->
-
-footer?
-```
-
-type includes:
-
-```json
-["add", "update", "feat", "fix", "docs", "style", "refactor", "test", "rever"]
-```
-
-You could config vim as default editor for git commit, just do:
-
-```bash
-git config --global core.editor "vim"
-```
-
 ## Code styles
 
 - [React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
@@ -79,24 +55,14 @@ git config --global core.editor "vim"
 
 - [x] Fonts can't load # Make webpack css-loader module: false, [More about css-modules](https://github.com/css-modules/css-modules)
 - [x] Jest test conf # Make ReactDom to ReactDOM, word error.
-- [ ] redux
 - [x] react-router@^4 # [More about dynamic-import](https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/code-splitting.md)
-- [ ] cssnext
-
-## Support Plans
-
-- [ ] GraphQL
-- [ ] Apollo + Relay Modern
-- [ ] SSH
-- [ ] PWA(Service worker)
-- [x] Add ESDoc [Read more](https://esdoc.org/)
-
-  ![ESDoc](./docs/esdoc.png)
 
 ## More info
 
+- [ESDoc](./docs/esdoc.md)
+- [postcss](./docs/postcss.md)
 - [6 pro tips for React](./docs/best-practice.md)
 
 ## MIT License
 
-Copyright (c) 2017 TaylorPzreal
+Copyright (c) 2017-2020 TaylorPzreal

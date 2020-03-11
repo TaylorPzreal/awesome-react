@@ -49,10 +49,8 @@ module.exports = merge(common, {
                 loader: 'css-loader',
                 options: {
                   sourceMap: true,
-                  importLoaders: 1,
                 }
               },
-              'postcss-loader'
             ]
           },
           {
@@ -63,10 +61,9 @@ module.exports = merge(common, {
                 loader: 'css-loader',
                 options: {
                   sourceMap: true,
-                  importLoaders: 2,
+                  importLoaders: 1,
                 }
               },
-              'postcss-loader',
               {
                 loader: 'sass-loader',
                 options: {

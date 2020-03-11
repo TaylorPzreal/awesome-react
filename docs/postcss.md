@@ -1,3 +1,14 @@
+# postcss
+
+> [postcss](https://postcss.org/)
+
+```bash
+yarn add cssnano postcss-loader postcss-preset-env postcss-js postcss-import
+```
+
+Add __postcss.config.js__ file
+
+```js
 module.exports = ({ env }) => ({
   parser: 'postcss-js',
   exec: true,
@@ -8,3 +19,4 @@ module.exports = ({ env }) => ({
     cssnano: {},
   },
 });
+```

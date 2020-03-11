@@ -1,7 +1,7 @@
 const { HashedModuleIdsPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
@@ -61,16 +61,9 @@ module.exports = merge(common, {
               {
                 loader: 'css-loader',
                 options: {
-                  importLoaders: 1,
                   sourceMap: useSourceMap,
                 }
               },
-              {
-                loader: 'postcss-loader',
-                options: {
-                  sourceMap: useSourceMap,
-                }
-              }
             ],
           },
           {
@@ -85,13 +78,7 @@ module.exports = merge(common, {
               {
                 loader: 'css-loader',
                 options: {
-                  importLoaders: 2,
-                  sourceMap: useSourceMap,
-                }
-              },
-              {
-                loader: 'postcss-loader',
-                options: {
+                  importLoaders: 1,
                   sourceMap: useSourceMap,
                 }
               },
@@ -178,28 +165,14 @@ module.exports = merge(common, {
       ignoreOrder: false, // Enable to remove warnings about conflicting order
     }),
 
-    new UglifyJsPlugin({
-      test: /\.js$/i,
-      extractComments: false,
-      sourceMap: useSourceMap,
-      cache: false,
-      parallel: true,
-      uglifyOptions: {
-        output: {
-          ascii_only: true,
-          comments: false
-        },
-        ecma: 5,
-        warnings: false,
-        ie8: false,
-        compress: {
-          comparisons: false
-        }
-      }
-    }),
-
     new ManifestPlugin({
       fileName: 'app-manifest.json'
     })
-  ]
+  ],
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin({
+      test: /\.js(\?.*)?$/i,
+    })],
+  },
 });
